@@ -12,7 +12,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import PasswordInputText from 'react-native-hide-show-password-input';
 	
-export default class LoginPage extends Component {
+export default class sc extends Component {
   static navigationOptions = { 
       headerStyle: {
       	elevation: 0,
@@ -36,42 +36,9 @@ export default class LoginPage extends Component {
  
 	render(){
 		return(
-			<KeyboardAvoidingView behavior="padding" style={styles.container}>
-				<Logo style={styles.logo}/>
-
-				<View style={styles.input}>
-					<Text style={styles.text}> Email </Text>
-						<TextInput style={styles.inputBox}
-							underlineColorAndroid='#DADADA'
-							placeholder="Masukan Email"
-							returnKeyType="next"
-							placeholderTextColor = "#DADADA"
-							selectionColor="#fff"
-							keyboardType="email-address"
-							onSubmitEditing={()=> this.password.focus()}/>
-
-					<View style = { styles.textBoxBtnHolder }>
-						<Text style={styles.text}> Kata Sandi </Text>
-							<TextInput style={styles.inputBox}
-								underlineColorAndroid='#DADADA'
-								placeholder="Masukan Kata Sandi"
-								placeholderTextColor = "#DADADA"
-								returnKeyType="go"
-								secureTextEntry={ this.state.hidePassword }
-								value={this.state.password}
-		                    	onChangeText={ (password) => this.setState({ password }) }
-								ref={(input) => this.password = input}/>
-
-				        <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
-				          <Image source = { ( this.state.hidePassword ) ? require('../images/hide.png') : require('../images/see.png') } style={styles.btnImage}/>
-				        </TouchableOpacity>
-				    </View>
-				</View>
-
-				<TouchableOpacity style={styles.button} onPress ={() => this.props.navigation.navigate('Menu')}>
-					<Text style={styles.buttonText}>Masuk</Text>
-				</TouchableOpacity>
-			</KeyboardAvoidingView>
+		<View style={styles.container}>
+        	<Text style={styles.text}>ini screen materi</Text>
+        </View>
 		)
 	}
 }

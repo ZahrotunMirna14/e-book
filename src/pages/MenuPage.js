@@ -1,55 +1,43 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity
-} from 'react-native';
-import Logo from '../component/Logo';
-
+import React from 'react';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, ImageBackground, Image} from 'react-native';
+import { Container, Header, body, Title, Card, CardItem, Left, Content, Thumbnail, Subtitle} from 'native-base';
+import ListMenu from './ListMenu';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-export default class MenuPage extends Component<{}> {
-	render() {
-		return(
-			<View style={styles.container}>
-          <TouchableOpacity style={styles.buttonMasuk} onPress = {() => this.props.navigation.navigate('materi')}>
-              <Text style={styles.buttonTextMasuk}>Materi Pembelajaran</Text> 
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonMasuk} onPress = {() => this.props.navigation.navigate('Login')}>
-              <Text style={styles.buttonTextMasuk}>Kuis</Text> 
-          </TouchableOpacity><TouchableOpacity style={styles.buttonMasuk} onPress = {() => this.props.navigation.navigate('Login')}>
-              <Text style={styles.buttonTextMasuk}>Ujian</Text> 
-          </TouchableOpacity>
-          
-			</View>
-		)
-	}
+export default class MenuPage extends React.Component {
+  static navigationOptions = { 
+      headerStyle: {
+        elevation: 0,
+        backgroundColor: '#ECEFF3'
+      },
+      headerTitleStyle: {
+      color: '#7850EA',
+      fontFamily: 'NunitoSans-SemiBold',
+      fontSize: 16
+  }
+};
+  render() {
+    return (
+      <Content>
+        <ListMenu
+          judul="Materi Pembelajaran"
+          subtitle="Masuk"
+          img={require('../images/icon1.png')}
+          navigation= {() => this.props.navigation.navigate('Materi')}
+        />
+
+        <ListMenu
+          judul="Latihan Soal"
+          img={require('../images/icon2.png')}
+        />
+
+        <ListMenu
+          judul="Kuis"
+          img={require('../images/icon3.png')}
+        />
+      </Content>
+    )
+  }
+
 }
-
-const styles = StyleSheet.create({  
-  container: {
-    paddingTop: 60,
-    alignItems: 'center',
-    backgroundColor:'#fff',
-    height: 2000,
-  },
-  buttonMasuk: {
-    marginBottom: 20,
-    width: 323, 
-    height: 116,
-    backgroundColor:'#fff',
-    borderRadius: 10,
-    paddingHorizontal: 18,
-    elevation: 10,
-  },
-  buttonTextMasuk: {
-    paddingTop: 73,
-    color: '#000',
-    fontSize:14,
-  },
-})
-

@@ -10,7 +10,8 @@ export default class Logo extends Component<{}> {
  render(){
   return(
 	<View style={styles.container}>
-	 <Image source={require('../images/icon.png')}/>
+	 <Image style={styles.img}
+	 source={require('../images/iconb.png')}/>
 
 	</View>
 	)
@@ -21,8 +22,14 @@ export default class Logo extends Component<{}> {
 
 const styles = StyleSheet.create({
 	container : {
-		marginVertical: 100,
+		marginTop: 48,
 		alignItems:'center',
 	},
+	img :{
+
+		width: 82,
+		height: 82,
+
+	}
 
 });
