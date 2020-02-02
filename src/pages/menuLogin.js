@@ -13,6 +13,8 @@ import unsur from './unsur';
 import fungsi from './fungsi';
 import tujuan from './tujuan';
 import manfaat from './manfaat';
+import contoh from './contoh';
+import partisipasi from './partisipasi';
 
 export class menuLogin extends React.Component {
   static navigationOptions = {
@@ -54,6 +56,8 @@ const AppStackNavigator = createStackNavigator({
     Fungsi: fungsi,
     Tujuan : tujuan,
     Manfaat: manfaat,
+    Contoh: contoh,
+    Partisipasi: partisipasi,
   }
 );
 

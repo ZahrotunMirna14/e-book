@@ -68,12 +68,14 @@ export default class materi extends React.Component {
 	    		judul="Contoh dan Penerapan"
 	    		subtitle="Mengembangkan sikap saling mengasihi, saling menolong ..."
 	    		img={require('../images/iconMateri/7.png')}
+	    		navigation= {() => this.props.navigation.navigate('Contoh')}
 	    	/>
 
 	    	<List
 	    		judul="Bentuk Partisipasi"
 	    		subtitle="Hubungan patriotisme dengan pertahanan ..."
 	    		img={require('../images/iconMateri/8.png')}
+	    		navigation= {() => this.props.navigation.navigate('Partisipasi')}
 	    	/>
 	    </Content>
     )
