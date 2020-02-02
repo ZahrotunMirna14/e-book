@@ -61,17 +61,16 @@ const styles = StyleSheet.create({
     },
 
     judul:{
+        fontWeight: 'bold',
         marginHorizontal: 18,
         fontSize: 16,
-        color: '#3a3a3a',
-        fontFamily: 'NunitoSans-Bold',
+        color: '#3a3a3a'
     },
     caption:{
         marginLeft: 18,
         marginRight: 80,
         fontSize: 14,
         marginTop: 4,
-        color: '#7d7d7d',
-        fontFamily: 'NunitoSans-Regular',
+        color: '#7d7d7d'
     }
 })

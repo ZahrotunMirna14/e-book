@@ -20,48 +20,53 @@ export default class materi extends React.Component {
   render() {
     return (
       
-    	<Content >
+    	<Content style={styles.View}>
 	    	<List
+	    		style={{marginTop: 48}}
 	    		judul="Pengertian"
-	    		subtitle="Bela Negara adalah sikap dan perilaku ..."
+	    		subtitle="Bela Negara adalah sikap dan perilaku warga negara ..."
 	    		img={require('../images/iconMateri/1.png')}
-	    		navigation= {() => this.props.navigation.navigate('Scr')}
+	    		navigation= {() => this.props.navigation.navigate('Pengertian')}
 	    	/>
 
 	    	<List
 	    		judul="Dasar Hukum"
-	    		subtitle="Tap MPR No.VI Tahun 1973 tentang konsep..."
+	    		subtitle="Tap MPR No.VI Tahun 1973 tentang konsep Wawasan ..."
 	    		img={require('../images/iconMateri/2.png')}
-	    		navigation= {() => this.props.navigation.navigate('Daftar')}
+	    		navigation= {() => this.props.navigation.navigate('Dasarhukum')}
 	    	/>
 
 	    	<List
 	    		judul="Unsur"
 	    		subtitle="Memiliki jiwa cinta tanah air,Rela berkorban demi ..."
 	    		img={require('../images/iconMateri/3.png')}
+	    		navigation= {() => this.props.navigation.navigate('Unsur')}
 	    	/>
 
 	    	<List
 	    		judul="Fungsi"
-	    		subtitle="Mempertahankan Negara dari berbagai ancaman, ..."
+	    		subtitle="Mempertahankan Negara dari berbagai ancaman, Men ..."
 	    		img={require('../images/iconMateri/4.png')}
+	    		navigation= {() => this.props.navigation.navigate('Fungsi')}
 	    	/>
 
 	    	<List
 	    		judul="Tujuan"
-	    		subtitle="Mempertahankan kelangsungan hidup ..."
+	    		subtitle="Mempertahankan kelangsungan hidup bang ..."
 	    		img={require('../images/iconMateri/5.png')}
+	    		navigation= {() => this.props.navigation.navigate('Tujuan')}
 	    	/>
 
 	    	<List
 	    		judul="Manfaat"
-	    		subtitle="Membentuk sikap disiplin waktu, aktivitas, dan ..."
+	    		subtitle="Membentuk sikap disiplin waktu, aktivitas, dan penga ..."
 	    		img={require('../images/iconMateri/6.png')}
+	    		navigation= {() => this.props.navigation.navigate('Manfaat')}
 	    	/>
 
 	    	<List
 	    		judul="Contoh dan Penerapan"
-	    		subtitle="Mengembangkan sikap saling mengasihi, saling ..."
+	    		subtitle="Mengembangkan sikap saling mengasihi, saling menolong ..."
 	    		img={require('../images/iconMateri/7.png')}
 	    	/>
 
@@ -75,3 +80,7 @@ export default class materi extends React.Component {
   }
 
 }
+
+const styles = StyleSheet.create({
+
+})

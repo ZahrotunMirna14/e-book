@@ -1,6 +1,6 @@
 import React from 'react';
-import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, Button } from 'react-native';
-import { Container, Header, body, Title, Card, CardItem, Left, Right, Content, Thumbnail, Subtitle} from 'native-base';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar, TouchableOpacity} from 'react-native';
+import { Container, Header, body, Title, Card, CardItem, Left, Right, Content, Thumbnail, Subtitle, Button} from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -9,17 +9,19 @@ export default class ListMenu extends React.Component {
     return (
         <View style={styles.container}>
         	<Card style={styles.cv}  >
-        		<CardItem button onPress = {this.props.navigation} 
-                style={styles.cav}>
+        		<CardItem style={styles.cav}>
         			<Left>
-        				<View>
+        				<View style={styles.cnt}>
     	    				<Text style={styles.judul}>{this.props.judul}</Text>
+                             <TouchableOpacity onPress = {this.props.navigation} style={styles.btn}>  
+                                <Text style={styles.caption}>Masuk</Text>
+                             </TouchableOpacity>
         				</View>
         			</Left>
         			<Right>
 	        			<Thumbnail
 	        				source={this.props.img}
-	                        style={styles.gambar}/>
+	                        style={styles.gambar} />
                     </Right>
         		</CardItem>
         	</Card>
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
         elevation: 0,
         borderRadius: 10,
         shadowRadius: 10,
-        marginTop: 20
+        marginTop: 20,
     },
 
     cav:{
@@ -55,26 +57,40 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
 
+    cnt:{
+        marginTop: 10,
+        marginBottom: 10
+    },
+
     gambar: {
-    	width: 100,
-    	height: 90,
-    	borderRadius: 5,
-    	right: -17,
-    	bottom: -13,
+    	width: '100%',
+    	height: '110%',
+        marginTop: 15,
+        marginRight: -17,
+        borderRadius: 10,
     },
 
     judul:{
         fontSize: 18,
         color: '#3a3a3a',
-        bottom: 10,
+        marginTop: -3,
+        marginBottom: 3,
         fontFamily: 'NunitoSans-Bold',
-        marginRight: 0,
+        marginRight: -50,
     },
     caption:{
-        marginLeft: 18,
-        marginRight: 80,
+        marginLeft: 28,
+        fontFamily: 'NunitoSans-Bold',
         fontSize: 14,
-        marginTop: 4,
-        color: '#7d7d7d'
+        color: '#ffffff'
+    },
+    btn:{
+        marginTop: 13,
+        paddingVertical: 5,
+        borderRadius: 10,
+        width: 100,
+        height: 33,
+        backgroundColor:'#7850EA',
+        fontSize: 10
     }
 })

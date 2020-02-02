@@ -8,6 +8,11 @@ import LoginPage from './LoginPage';
 import materi from './materi';
 import Logo from '../component/Logo';
 import sc from './sc';
+import dasar from './dasar';
+import unsur from './unsur';
+import fungsi from './fungsi';
+import tujuan from './tujuan';
+import manfaat from './manfaat';
 
 export class menuLogin extends React.Component {
   static navigationOptions = {
@@ -43,7 +48,12 @@ const AppStackNavigator = createStackNavigator({
     Masuk: LoginPage,
     Daftar: signup,
     Materi: materi,
-    Scr: sc,
+    Pengertian: sc,
+    Dasarhukum : dasar,
+    Unsur: unsur,
+    Fungsi: fungsi,
+    Tujuan : tujuan,
+    Manfaat: manfaat,
   }
 );
 

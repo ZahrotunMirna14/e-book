@@ -12,9 +12,9 @@ export default class MenuPage extends React.Component {
         backgroundColor: '#ECEFF3'
       },
       headerTitleStyle: {
-      color: '#7850EA',
-      fontFamily: 'NunitoSans-SemiBold',
-      fontSize: 16
+        color: '#7850EA',
+        fontFamily: 'NunitoSans-SemiBold',
+        fontSize: 16
   }
 };
   render() {
@@ -23,13 +23,14 @@ export default class MenuPage extends React.Component {
         <ListMenu
           judul="Materi Pembelajaran"
           subtitle="Masuk"
-          img={require('../images/icon1.png')}
+          img={require('../images/icon1.png')} style={{width: '100%', height: '100%'}} resizeMode="stretch"
           navigation= {() => this.props.navigation.navigate('Materi')}
         />
 
         <ListMenu
           judul="Latihan Soal"
           img={require('../images/icon2.png')}
+          
         />
 
         <ListMenu
