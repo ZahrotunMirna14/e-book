@@ -15,6 +15,7 @@ import tujuan from './tujuan';
 import manfaat from './manfaat';
 import contoh from './contoh';
 import partisipasi from './partisipasi';
+import quiz from './quiz';
 
 export class menuLogin extends React.Component {
   static navigationOptions = {
@@ -58,6 +59,7 @@ const AppStackNavigator = createStackNavigator({
     Manfaat: manfaat,
     Contoh: contoh,
     Partisipasi: partisipasi,
+    quiziz: quiz,
   }
 );
 
