@@ -30,6 +30,7 @@ export default class MenuPage extends React.Component {
         <ListMenu
           judul="Latihan Soal"
           img={require('../images/icon2.png')}
+          navigation= {() => this.props.navigation.navigate('quiziz')}
           
         />
 

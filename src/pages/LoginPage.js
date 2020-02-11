@@ -11,6 +11,7 @@ import Logo from '../component/Logo';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import PasswordInputText from 'react-native-hide-show-password-input';
+import {Container, Header, Left, Body, Right, Title, Content, Button} from 'native-base';
 	
 export default class LoginPage extends Component {
   static navigationOptions = { 
@@ -36,6 +37,15 @@ export default class LoginPage extends Component {
  
 	render(){
 		return(
+			// <Container>
+		 //        <Header noShadow style={{backgroundColor: '#fff'}}>
+		 //          <Left>
+		 //            <Image
+		 //              source={require('../images/back.png')}
+		 //              onPress={()=>this.props.navigation.navigate('menuLog')}
+		 //            />
+		 //          </Left>	
+		 //         </Header>	
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				<Logo style={styles.logo}/>
 
@@ -72,6 +82,7 @@ export default class LoginPage extends Component {
 					<Text style={styles.buttonText}>Masuk</Text>
 				</TouchableOpacity>
 			</KeyboardAvoidingView>
+		//	</Container>
 		)
 	}
 }
