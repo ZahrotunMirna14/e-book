@@ -7,13 +7,21 @@ import {
 	TouchableOpacity,
 	KeyboardAvoidingView, Image, ScrollView,
 }from 'react-native';
-import Logo from '../component/Logo';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Unorderedlist from 'react-native-unordered-list';
 
-export default class sc extends Component {
-  static navigationOptions = { 
+export default class dasar extends Component {
+  static navigationOptions= ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../../images/back.png')}/>
+         </TouchableOpacity>
+       ,
+  	  title: 'Dasar Hukum',
       headerStyle: {
       	elevation: 0,
       	backgroundColor: '#ffffff'
@@ -22,14 +30,15 @@ export default class sc extends Component {
     	color: '#7850EA',
     	fontFamily: 'NunitoSans-SemiBold',
     	fontSize: 16
-  }
-    };
+  	}
+    });
 	render(){
 		return(
 			<ScrollView style={{backgroundColor: '#ffffff'}}>
 			<View style={styles.container}>
-				<Image style={styles.img} source={require('../images/materi/dasar.png')} />
+				<Image style={styles.img} source={require('../../images/materi/dasar.png')} />
 				<View style={styles.content}>
+					<Unorderedlist><Text style={styles.text}>Pasal 27 ayat (3) UUD 194.</Text></Unorderedlist>
 					<Unorderedlist><Text style={styles.text}>Tap MPR No.VI Tahun 1973 tentang konsep Wawasan Nusantara dan Keamanan Nasional.</Text></Unorderedlist>
 					<Unorderedlist><Text style={styles.text}>Undang-Undang No.29 tahun 1954 tentang Pokok-Pokok Perlawanan Rakyat.</Text></Unorderedlist>
 					<Unorderedlist><Text style={styles.text}>Undang-Undang No.20 tahun 1982 tentang Ketentuan Pokok Hankam Negara RI. Diubah oleh Undang-Undang Nomor 1 Tahun 1988.</Text></Unorderedlist>

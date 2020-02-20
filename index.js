@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import menuLog from './src/pages/menuLogin';
+import App from './App';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => menuLog);
+AppRegistry.registerComponent(appName, () => App);

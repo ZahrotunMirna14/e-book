@@ -7,13 +7,21 @@ import {
 	TouchableOpacity,
 	KeyboardAvoidingView, Image, ScrollView,
 }from 'react-native';
-import Logo from '../component/Logo';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Unorderedlist from 'react-native-unordered-list';
 
-export default class unsur extends Component {
-  static navigationOptions = { 
+export default class tujuan extends Component {
+  static navigationOptions= ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../../images/back.png')}/>
+         </TouchableOpacity>
+       ,
+  	  title: 'Tujuan Bela Negara',
       headerStyle: {
       	elevation: 0,
       	backgroundColor: '#ffffff'
@@ -23,12 +31,12 @@ export default class unsur extends Component {
     	fontFamily: 'NunitoSans-SemiBold',
     	fontSize: 16
   }
-    };
+    });
 	render(){
 		return(
 			<ScrollView style={{backgroundColor: '#ffffff'}}>
 			<View style={styles.container}>
-				<Image style={styles.img} source={require('../images/materi/tujuan.png')} />
+				<Image style={styles.img} source={require('../../images/materi/tujuan.png')} />
 					<Unorderedlist><Text style={styles.text}>Mempertahankan kelangsungan hidup bangsa dan negara</Text></Unorderedlist>
 					<Unorderedlist><Text style={styles.text}>Melestarikan budaya</Text></Unorderedlist>
 					<Unorderedlist><Text style={styles.text}>Menjalankan nilai-nilai pancasila dan UUD 1945</Text></Unorderedlist>

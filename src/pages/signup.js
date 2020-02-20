@@ -1,32 +1,33 @@
-import React, { Component } from 'react';
-import {
-	StyleSheet,
-	Text,
-	View,
-	TextInput,
-	TouchableOpacity ,
-	KeyboardAvoidingView, Image
-}from 'react-native';
+import React, {Component} from 'react';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View, StatusBar,  TouchableOpacity, ImageBackground, BackHandler, Alert, Image, KeyboardAvoidingView, TextInput } from 'react-native';
+import {Container, Header, Content, Button, Text} from 'native-base';
 import Logo from '../component/Logo';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import {Icon} from 'react-native-elements';
+import PasswordInputText from 'react-native-hide-show-password-input';
 
-export default class signup extends Component {
-  static navigationOptions = { 
+export default class LoginPage extends Component {
+
+  static navigationOptions= ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../images/back.png')}/>
+         </TouchableOpacity>
+       , title: null,
       headerStyle: {
-      	elevation: 0,
-      	backgroundColor: '#ffffff'
+        elevation: 0,
+        backgroundColor: '#ffffff'
       },
       headerTitleStyle: {
-    	color: '#7850EA',
-    	fontFamily: 'NunitoSans-SemiBold',
-    	fontSize: 16
-  	  },
-  	  
-
-    };
-	constructor() {
+        color: '#7850EA',
+        fontFamily: 'NunitoSans-SemiBold',
+        fontSize: 16
+      },
+      
+    });
+  constructor() {
 	    super();	 
 	    this.state = { hidePassword: true }
 	  }	
@@ -35,17 +36,17 @@ export default class signup extends Component {
 	  {
 	    this.setState({ hidePassword: !this.state.hidePassword });
 	  }
-	// async componentDidMount() {
-	//     const akun = await ajax.fetchApi();
-	//     this.setState({akun});
-	//   }
-
-	render(){
-		return(
-			<KeyboardAvoidingView behavior="padding" style={styles.container}>
+ 
+   render(){
+    return(
+    	<View style={styles.container}>
+    		<View style={styles.top}>
 				<Logo style={styles.logo}/>
-				<View style={styles.input}>
-					<Text style={styles.text}> Nama Lengkap </Text>
+    		</View>
+    		<View style={styles.bottom}>
+    	<KeyboardAvoidingView behavior="padding" style={styles.conten}>
+    			<View style={styles.input}>
+    			<Text style={styles.text}> Nama Lengkap </Text>
 						<TextInput style={styles.inputBox}
 							underlineColorAndroid='#DADADA'
 							placeholder="Masukan Nama"
@@ -64,49 +65,62 @@ export default class signup extends Component {
 							selectionColor="#fff"
 							keyboardType="email-address"
 							onSubmitEditing={()=> this.password.focus()}/>
-					
-					<View style = { styles.textBoxBtnHolder }>
-					<Text style={styles.text}> Kata Sandi </Text>
-						<TextInput style={styles.inputBox}
-							underlineColorAndroid='#DADADA'
-							placeholder="Masukan Kata Sandi"
-							secureTextEntry={true}
-							returnKeyType="go"
-							placeholderTextColor = "#DADADA"
-							ref={(input) => this.password = input}/>
 
-					<TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
+					<View style = { styles.textBoxBtnHolder }>
+						<Text style={styles.text}> Kata Sandi </Text>
+							<TextInput style={styles.inputBox}
+								underlineColorAndroid='#DADADA'
+								placeholder="Masukan Kata Sandi"
+								placeholderTextColor = "#DADADA"
+								returnKeyType="go"
+								secureTextEntry={ this.state.hidePassword }
+								value={this.state.password}
+		                    	onChangeText={ (password) => this.setState({ password }) }
+								ref={(input) => this.password = input}/>
+
+				        <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
 				          <Image source = { ( this.state.hidePassword ) ? require('../images/hide.png') : require('../images/see.png') } style={styles.btnImage}/>
 				        </TouchableOpacity>
 				    </View>
-				 </View>
+				</View>
 
 				<TouchableOpacity style={styles.button} onPress ={() => this.props.navigation.navigate('Menu')}>
 					<Text style={styles.buttonText}>Daftar</Text>
-				</TouchableOpacity>
-			</KeyboardAvoidingView>
-		)
-	}
+				</TouchableOpacity>    	
+		</KeyboardAvoidingView>	    			
+    		</View>
+    	</View>
+    )
 }
-
+}
 
 const styles = StyleSheet.create({
 	container : {
 		backgroundColor:'#ffffff',
-		flexGrow: 1,
+		flex: 1,
 		justifyContent:'center',
 	},
 
-	logo:{
-		marginBottom: 56,
+	conten : {
+		backgroundColor:'#ffffff',
 	},
 
-	input:{
-		marginTop: 32,
+	top:{
+	    height: '25%',
+	    alignItems: 'center',
+		justifyContent:'center',
+	 },
+
+	 bottom:{
+	    height: '75%',
+	    justifyContent: 'center',
+	},
+
+	logo:{
+	    justifyContent: 'center',
 	},
 
 	text:{
-
 		marginHorizontal: 18,
 		fontSize:14,
 		color: '#7d7d7d',
@@ -119,7 +133,7 @@ const styles = StyleSheet.create({
     	marginHorizontal: 18,
 		fontSize:14,
 		color:'#000',
-    	fontFamily: 'NunitoSans-Regular',
+		fontFamily: 'NunitoSans-Regular',
 	},
 
 	button: {
@@ -132,6 +146,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 12,
 		textAlign:'center',
     	marginHorizontal: 18,
+    	
 	},
 
 	buttonText: {
@@ -148,10 +163,11 @@ const styles = StyleSheet.create({
 	    width: '100%'
   	},
 
-	textBoxBtnHolder:{
+  	textBoxBtnHolder:{
     	position: 'relative',
 	    alignSelf: 'stretch',
-	    justifyContent: 'center'
+	    justifyContent: 'center',
+    	fontFamily: 'NunitoSans-Bold',
  	},
 
  	visibilityBtn:  {
@@ -162,12 +178,4 @@ const styles = StyleSheet.create({
 	    padding: 5,
 	    bottom: 10
   	},
-  	icon: {
-    paddingLeft: 10
-  },
-  iconContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    width: 120
-  }
 });

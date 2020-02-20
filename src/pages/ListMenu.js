@@ -8,23 +8,23 @@ export default class ListMenu extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-        	<Card style={styles.cv}  >
-        		<CardItem style={styles.cav}>
-        			<Left>
-        				<View style={styles.cnt}>
-    	    				<Text style={styles.judul}>{this.props.judul}</Text>
+            <Card style={styles.cv}  >
+                <CardItem style={styles.cav}>
+                    <Left>
+                        <View style={styles.cnt}>
+                            <Text style={styles.judul}>{this.props.judul}</Text>
                              <TouchableOpacity onPress = {this.props.navigation} style={styles.btn}>  
                                 <Text style={styles.caption}>Masuk</Text>
                              </TouchableOpacity>
-        				</View>
-        			</Left>
-        			<Right>
-	        			<Thumbnail
-	        				source={this.props.img}
-	                        style={styles.gambar} />
+                        </View>
+                    </Left>
+                    <Right>
+                        <Thumbnail
+                            source={this.props.img}
+                            style={styles.gambar} />
                     </Right>
-        		</CardItem>
-        	</Card>
+                </CardItem>
+            </Card>
         </View>
     )
   }
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ECEFF3',
+
     },
 
     cv: { 
@@ -63,15 +63,15 @@ const styles = StyleSheet.create({
     },
 
     gambar: {
-    	width: '100%',
-    	height: '110%',
-        marginTop: 15,
-        marginRight: -17,
+        width: '100%',
+        height: '110%',
+        marginTop: '13.5%',
+        marginRight: '-13.5%',
         borderRadius: 10,
     },
 
     judul:{
-        fontSize: 18,
+        fontSize: 16,
         color: '#3a3a3a',
         marginTop: -3,
         marginBottom: 3,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     },
     caption:{
         marginLeft: 28,
-        fontFamily: 'NunitoSans-Bold',
+        fontFamily: 'NunitoSans-SemiBold',
         fontSize: 14,
         color: '#ffffff'
     },

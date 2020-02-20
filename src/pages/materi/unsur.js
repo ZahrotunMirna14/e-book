@@ -7,13 +7,21 @@ import {
 	TouchableOpacity,
 	KeyboardAvoidingView, Image, ScrollView,
 }from 'react-native';
-import Logo from '../component/Logo';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Unorderedlist from 'react-native-unordered-list';
 
 export default class unsur extends Component {
-  static navigationOptions = { 
+  static navigationOptions = ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../../images/back.png')}/>
+         </TouchableOpacity>
+       ,
+  	  title: 'Unsur-unsur Bela Negara',
       headerStyle: {
       	elevation: 0,
       	backgroundColor: '#ffffff'
@@ -23,16 +31,18 @@ export default class unsur extends Component {
     	fontFamily: 'NunitoSans-SemiBold',
     	fontSize: 16
   }
-    };
+    });
 	render(){
 		return(
 			<ScrollView style={{backgroundColor: '#ffffff'}}>
 			<View style={styles.container}>
-				<Image style={styles.img} source={require('../images/materi/fungsi.png')} />
-					<Unorderedlist><Text style={styles.text}>Mempertahankan Negara dari berbagai ancaman</Text></Unorderedlist>
-					<Unorderedlist><Text style={styles.text}>Menjaga keutuhan wilayah negara</Text></Unorderedlist>
-					<Unorderedlist><Text style={styles.text}>Merupakan kewajiban setiap warga negara</Text></Unorderedlist>
-					<Unorderedlist><Text style={styles.text}>Merupakan panggilan sejarah</Text></Unorderedlist>
+				<Image style={styles.img} source={require('../../images/materi/unsur.png')} />
+					<Unorderedlist><Text style={styles.text}>Memiliki jiwa cinta tanah air.</Text></Unorderedlist>
+					<Unorderedlist><Text style={styles.text}>Rela berkorban demi kesejahteraan bangsa dan negara.</Text></Unorderedlist>
+					<Unorderedlist><Text style={styles.text}>Meyakini bahwa Pancasila merupakan ideologi negara</Text></Unorderedlist>
+					<Unorderedlist><Text style={styles.text}>Memiliki kesadaran berbangsa dan bernegara</Text></Unorderedlist>
+					<Unorderedlist><Text style={styles.text}>Mempunyai keahlian awal bela negara</Text></Unorderedlist>
+
 			</View>
 			</ScrollView>
 		)

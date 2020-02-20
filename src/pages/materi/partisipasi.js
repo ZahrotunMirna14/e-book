@@ -7,13 +7,21 @@ import {
 	TouchableOpacity,
 	KeyboardAvoidingView, Image, ScrollView
 }from 'react-native';
-import Logo from '../component/Logo';
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Unorderedlist from 'react-native-unordered-list';
 
 export default class partisipasi extends Component {
-  static navigationOptions = { 
+  static navigationOptions = ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../../images/back.png')}/>
+         </TouchableOpacity>
+       ,
+  	  title: 'Bentuk Partisipasi',
       headerStyle: {
       	elevation: 0,
       	backgroundColor: '#ffffff'
@@ -23,13 +31,13 @@ export default class partisipasi extends Component {
     	fontFamily: 'NunitoSans-SemiBold',
     	fontSize: 16
   }
-    };
+    });
 	render(){
 		return(
 			<ScrollView style={styles.sView}>
 			<View style={styles.container}>
 			
-				<Image style={styles.img} source={require('../images/materi/partisipasi.png')} />
+				<Image style={styles.img} source={require('../../images/materi/partisipasi.png')} />
 				<View style={styles.content}>
 					<Text style={styles.text}>Hubungan patriotisme dengan pertahanan dan keamanan nasional 
 						dapat digambarkan bahwa semangat dan jiwa patriot merupakan modal yang sangat berharga 

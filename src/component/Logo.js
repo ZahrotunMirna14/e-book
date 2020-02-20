@@ -9,7 +9,7 @@ import {
 export default class Logo extends Component<{}> {
  render(){
   return(
-	<View style={styles.container}>
+	<View >
 	 <Image style={styles.img}
 	 source={require('../images/iconb.png')}/>
 
@@ -22,11 +22,10 @@ export default class Logo extends Component<{}> {
 
 const styles = StyleSheet.create({
 	container : {
-		marginTop: 48,
-		alignItems:'center',
+		flex: 1,
 	},
 	img :{
-
+		
 		width: 82,
 		height: 82,
 

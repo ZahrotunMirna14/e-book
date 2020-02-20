@@ -7,8 +7,9 @@ import {
 	TextInput,
 	TouchableOpacity,
 	Button,
-  	Dimensions,
-  	ScrollView,
+  Dimensions,
+  ScrollView,
+  Image,
 }from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import Animbutton from './animbutton'
@@ -24,7 +25,7 @@ const jsonData = {"quiz" : {
       "options" : {
         "option1" : "Membayar pajak tepat pada waktunya",
         "option2" : "Menciptakan suasana rukun, damai, dan tentram dalam masyarakat",
-        "option3" : "Belajar dengan giat supaya mendapatan prestasi baikBelajar dengan giat supaya mendapatan prestasi baik",
+        "option3" : "Belajar dengan giat supaya mendapatan prestasi baik",
         "option4" : "Menciptakan suasana rukun, damai, dan harmonis dalam keluarga.",
         "option5" : "Mengamalkan nilai-nilai yang terkandung dalam Pancasila sebagai ideologi dan dasar negara"
         
@@ -134,11 +135,12 @@ const jsonData = {"quiz" : {
 }
 }
 
-export default class quiz extends Component {
+export default class Quiz extends Component {
 constructor(props){
     super(props);
     this.qno = 0
     this.score = 0
+    
  
     const jdata = jsonData.quiz.quiz1
     arrnew = Object.keys(jdata).map( function(k) { return jdata[k] });
@@ -151,9 +153,14 @@ constructor(props){
  
   }
 
-
-  static navigationOptions = { 
-  	  title: null,
+static navigationOptions= ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../images/back.png')}/>
+         </TouchableOpacity>
+       , title: null,
       headerStyle: {
         elevation: 0,
         backgroundColor: '#ffffff'
@@ -161,9 +168,11 @@ constructor(props){
       headerTitleStyle: {
         color: '#7850EA',
         fontFamily: 'NunitoSans-SemiBold',
-        fontSize: 18
-  }
-};
+        fontSize: 16
+      },
+      
+    });
+  
   prev(){
     if(this.qno > 0){
       this.qno--
@@ -175,12 +184,12 @@ constructor(props){
       this.qno++
  
       this.setState({ countCheck: 0, question: arrnew[this.qno].question, options: arrnew[this.qno].options, correctoption : arrnew[this.qno].correctoption})
-    }else{
-      
-      this.props.quizFinish(this.score*100/5)
+    } else {      
+      this.props.quizFinish(this.score*100/10)
      }
   }
   _answer(status,ans){ 
+
     if(status == true){
         const count = this.state.countCheck + 1
         this.setState({ countCheck: count })

@@ -4,28 +4,27 @@ import { Container, Header, body, Title, Card, CardItem, Left, Content, Thumbnai
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-export default class ListContent extends React.Component {
+export default class ListMember extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-            <Card style={styles.cv}  >
-                <CardItem button onPress = {this.props.navigation} 
+        	<Card style={styles.cv}  >
+        		<CardItem button 
                 style={styles.cav}>
-                    <Left>
-                        <Thumbnail
-                        source={this.props.img}
+        			<Left>
+        				<Thumbnail
+        				source={this.props.img}
                         style={styles.gambar}/>
-                        <View>
-                            <Text style={styles.judul}>{this.props.judul}</Text>
-                            <Text style={styles.caption}>{this.props.subtitle} </Text>
-                        </View>
-                    </Left>
-                </CardItem>
-            </Card>
+        				<View>
+    	    				<Text style={styles.judul}>{this.props.judul}</Text>
+    	    				<Text style={styles.caption}>{this.props.subtitle} </Text>
+        				</View>
+        			</Left>
+        		</CardItem>
+        	</Card>
         </View>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -37,8 +36,8 @@ const styles = StyleSheet.create({
 
     cv: { 
         marginBottom: 12,
-        width: 323,
-        height: 100, 
+        width: 324,
+        height: 80, 
         elevation: 0,
         borderRadius: 10,
         shadowRadius: 10,
@@ -56,7 +55,7 @@ const styles = StyleSheet.create({
     gambar: {
         paddingTop: 48,
         alignItems: 'center',
-        height: 75, width: 75,
+        height: 55, width: 55,
         borderRadius: 10,
     },
 

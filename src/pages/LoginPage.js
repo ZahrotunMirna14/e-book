@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
-import {
-	StyleSheet,
-	Text,
-	View,
-	TextInput,
-	TouchableOpacity,
-	KeyboardAvoidingView, Image
-}from 'react-native';
+import React, {Component} from 'react';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View, StatusBar,  TouchableOpacity, ImageBackground, BackHandler, Alert, Image, KeyboardAvoidingView, TextInput } from 'react-native';
+import {Container, Header, Content, Button, Text} from 'native-base';
 import Logo from '../component/Logo';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import PasswordInputText from 'react-native-hide-show-password-input';
-import {Container, Header, Left, Body, Right, Title, Content, Button} from 'native-base';
-	
+
 export default class LoginPage extends Component {
-  static navigationOptions = { 
+   static navigationOptions= ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../images/back.png')}/>
+         </TouchableOpacity>
+       , title: null,
       headerStyle: {
-      	elevation: 0,
-      	backgroundColor: '#ffffff'
+        elevation: 0,
+        backgroundColor: '#ffffff'
       },
       headerTitleStyle: {
-    	color: '#7850EA',
-    	fontFamily: 'NunitoSans-SemiBold',
-    	fontSize: 16
-  }
-    };
-    constructor() {
+        color: '#7850EA',
+        fontFamily: 'NunitoSans-SemiBold',
+        fontSize: 16
+      },
+      
+    });
+  constructor() {
 	    super();	 
 	    this.state = { hidePassword: true }
 	  }	
@@ -35,21 +36,15 @@ export default class LoginPage extends Component {
 	    this.setState({ hidePassword: !this.state.hidePassword });
 	  }
  
-	render(){
-		return(
-			// <Container>
-		 //        <Header noShadow style={{backgroundColor: '#fff'}}>
-		 //          <Left>
-		 //            <Image
-		 //              source={require('../images/back.png')}
-		 //              onPress={()=>this.props.navigation.navigate('menuLog')}
-		 //            />
-		 //          </Left>	
-		 //         </Header>	
-			<KeyboardAvoidingView behavior="padding" style={styles.container}>
+   render(){
+    return(
+    	<View style={styles.container}>
+    		<View style={styles.top}>
 				<Logo style={styles.logo}/>
-
-				<View style={styles.input}>
+    		</View>
+    		<View style={styles.bottom}>
+    	<KeyboardAvoidingView behavior="padding" style={styles.conten}>
+    			<View style={styles.input}>
 					<Text style={styles.text}> Email </Text>
 						<TextInput style={styles.inputBox}
 							underlineColorAndroid='#DADADA'
@@ -80,13 +75,13 @@ export default class LoginPage extends Component {
 
 				<TouchableOpacity style={styles.button} onPress ={() => this.props.navigation.navigate('Menu')}>
 					<Text style={styles.buttonText}>Masuk</Text>
-				</TouchableOpacity>
-			</KeyboardAvoidingView>
-		//	</Container>
-		)
-	}
+				</TouchableOpacity>    	
+		</KeyboardAvoidingView>	    			
+    		</View>
+    	</View>
+    )
 }
-
+}
 
 const styles = StyleSheet.create({
 	container : {
@@ -95,16 +90,32 @@ const styles = StyleSheet.create({
 		justifyContent:'center',
 	},
 
+	conten:{
+		backgroundColor:'#ffffff',
+		flex: 1,
+		justifyContent:'center',
+	},
+
+	top:{
+	    height: '35%',
+	    alignItems: 'center',
+		justifyContent:'center',
+	 },
+
+	 bottom:{
+	    height: '65%',
+	    justifyContent: 'center',
+	},
+
 	logo:{
-		marginBottom: 56,
+	    justifyContent: 'center',
 	},
 
 	input:{
-		marginTop: 120,
+		marginTop: 16,
 	},
 
 	text:{
-
 		marginHorizontal: 18,
 		fontSize:14,
 		color: '#7d7d7d',
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
 	    height: 48,
 		backgroundColor:'#7850EA',
 		borderRadius: 10,
-		marginTop: 48,
+		marginTop: 36,
 		marginBottom: 20,
 		paddingVertical: 12,
 		textAlign:'center',

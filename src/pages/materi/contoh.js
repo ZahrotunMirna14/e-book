@@ -7,13 +7,21 @@ import {
 	TouchableOpacity,
 	KeyboardAvoidingView, Image, ScrollView
 }from 'react-native';
-import Logo from '../component/Logo';
+import Video from '../../component/video';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Unorderedlist from 'react-native-unordered-list';
 
 export default class contoh extends Component {
-  static navigationOptions = { 
+  static navigationOptions = ({navigation}) =>({ 
+       headerLeft: () => 
+         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+           <Image
+               style={{width: 25, height: 25, marginTop: 2}}
+               source={require('../../images/back.png')}/>
+         </TouchableOpacity>
+       ,
+  	  title: 'Contoh Penerapan',
       headerStyle: {
       	elevation: 0,
       	backgroundColor: '#ffffff'
@@ -23,13 +31,14 @@ export default class contoh extends Component {
     	fontFamily: 'NunitoSans-SemiBold',
     	fontSize: 16
   }
-    };
+    });
 	render(){
 		return(
+		<View style={{flex: 1}}>
+				<Video/>
 			<ScrollView style={{backgroundColor: '#ffffff'}}>
 			<View style={styles.container}>
-			
-				<Image style={styles.img} source={require('../images/materi/contoh.png')} />
+
 				<View style={styles.content}>				
 					<Text style={styles.textC}>Penarapan Bela Negara di Lingkungan Keluarga</Text>
 
@@ -121,6 +130,7 @@ export default class contoh extends Component {
 				</View>
 			</View>
 			</ScrollView>
+			</View>
 		)
 	}
 }
@@ -132,7 +142,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 	},
-	img:{
+	video:{
 		width: 324,
 		height: 151,
 		marginTop: 20,

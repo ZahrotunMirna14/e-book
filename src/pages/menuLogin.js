@@ -1,69 +1,39 @@
-import React from 'react';
-import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, ImageBackground,  } from 'react-native';
+import React, { Component } from 'react';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View, StatusBar,  TouchableOpacity, ImageBackground, BackHandler, Alert, Image } from 'react-native';
+import {Container, Header, Content, Button, Text} from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import MenuPage from './MenuPage';
-import signup from './signup';
-import LoginPage from './LoginPage';
-import materi from './materi';
-import Logo from '../component/Logo';
-import sc from './sc';
-import dasar from './dasar';
-import unsur from './unsur';
-import fungsi from './fungsi';
-import tujuan from './tujuan';
-import manfaat from './manfaat';
-import contoh from './contoh';
-import partisipasi from './partisipasi';
-import quiz from './quiz';
 
-export class menuLogin extends React.Component {
+export default class MenuLogin extends Component {
+
   static navigationOptions = {
-      header: ()=> false,
-    };
-  // static navigationOptions = () =>{
-  //       Header: "none"
-  //   }
-  render() {
-    return (
+   header: ()=> false,
+  }
+   render(){
+    return(
       <View style={styles.container}>
-        <ImageBackground style={{width: '100%', height: '100%'}} resizeMode="stretch" source={require('../images/bg.png')}>
-          <View style={styles.btn}>
-            <Text style={styles.title}>Bela Negara</Text>
-            <Text style={styles.subtitle}>Bela Negara adalah sikap dan perilaku warga negara yang dijiwai oleh kecintaannya terhadap tanah air</Text>
-            <TouchableOpacity style={styles.buttonMasuk} onPress = {() => this.props.navigation.navigate('Masuk')}>
-              <Text style={styles.buttonTextMasuk}>Masuk</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonDaftar} onPress = {() => this.props.navigation.navigate('Daftar')}>
-              <Text style={styles.buttonTextDaftar}>Daftar</Text>
-            </TouchableOpacity>
-          </View> 
+        <ImageBackground style={{width: '100%', height: '100%'}} resizeMode="stretch" source={require('../images/background.png')}>
+        <View style={styles.top}>
+          <Text style={styles.title}>Bela Negara</Text>
+          <Text style={styles.subtitle}>Bela Negara adalah sikap dan perilaku warga negara yang dijiwai oleh kecintaannya terhadap tanah air</Text>
+        </View>
+        <View style={styles.center}>
+          <Image style={{width: '85%', height: '120%', marginTop: '-20%'}} resizeMode="contain"
+            source={require('../images/img.png')}/>
+        </View>
+        <View style={styles.bottom}>
+          <TouchableOpacity style={styles.buttonMasuk} onPress = {() => this.props.navigation.navigate('Masuk')}>
+            <Text style={styles.buttonTextMasuk}>Masuk</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonDaftar} onPress = {() => this.props.navigation.navigate('Daftar')}>
+            <Text style={styles.buttonTextDaftar}>Daftar</Text>
+          </TouchableOpacity>
+        </View>        
         </ImageBackground>
-    </View>
-    )
-  }
-
+      </View>
+      )
 }
-
-const AppStackNavigator = createStackNavigator({
-    menuLog: menuLogin,
-    Menu: MenuPage,
-    Masuk: LoginPage,
-    Daftar: signup,
-    Materi: materi,
-    Pengertian: sc,
-    Dasarhukum : dasar,
-    Unsur: unsur,
-    Fungsi: fungsi,
-    Tujuan : tujuan,
-    Manfaat: manfaat,
-    Contoh: contoh,
-    Partisipasi: partisipasi,
-    quiziz: quiz,
-  }
-);
-
-export default createAppContainer(AppStackNavigator);
+}
 
 const styles = StyleSheet.create({  
   container: {
@@ -71,17 +41,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff'
   },
+  top:{
+    height: '25%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-  bg:{
-    resizeMode: 'stretch',
-    width: '100%',
-    height: '100%'
+  center:{
+    height: '50%',
+    alignItems: 'center',
+  },
+
+  bottom:{
+    height: '25%',
+    alignItems: 'center',
   },
 
   title:{
-    marginTop: 60,
+   
     textAlign: 'center',
-    paddingHorizontal: 18,
+   
     color: '#ffffff',
     fontSize: 24,
     fontFamily: 'NunitoSans-Bold'
@@ -89,17 +68,13 @@ const styles = StyleSheet.create({
 
   subtitle:{
     marginTop: 12,
-    marginBottom: 350,
-    textAlign: 'center', 
-    paddingHorizontal: 18,   
+    marginHorizontal: 18,
+    textAlign: 'center',   
     color: '#ffffff',
     fontSize: 14,
     fontFamily: 'NunitoSans-Regular',
   },
 
-  btn:{
-    alignItems: 'center',
-  },
 
   buttonMasuk: {
     marginBottom: 20,
@@ -112,7 +87,6 @@ const styles = StyleSheet.create({
   },
 
   buttonDaftar: {
-
       width: 324, 
       height: 48,
       backgroundColor:'#DADADA',
