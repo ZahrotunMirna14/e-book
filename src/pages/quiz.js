@@ -151,28 +151,7 @@ constructor(props){
       countCheck : 0
     }
  
-  }
-
-static navigationOptions= ({navigation}) =>({ 
-       headerLeft: () => 
-         <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
-           <Image
-               style={{width: 25, height: 25, marginTop: 2}}
-               source={require('../images/back.png')}/>
-         </TouchableOpacity>
-       , title: null,
-      headerStyle: {
-        elevation: 0,
-        backgroundColor: '#ffffff'
-      },
-      headerTitleStyle: {
-        color: '#7850EA',
-        fontFamily: 'NunitoSans-SemiBold',
-        fontSize: 16
-      },
-      
-    });
-  
+  }  
   prev(){
     if(this.qno > 0){
       this.qno--
@@ -185,6 +164,7 @@ static navigationOptions= ({navigation}) =>({
  
       this.setState({ countCheck: 0, question: arrnew[this.qno].question, options: arrnew[this.qno].options, correctoption : arrnew[this.qno].correctoption})
     } else {      
+
       this.props.quizFinish(this.score*100/10)
      }
   }
@@ -204,6 +184,26 @@ static navigationOptions= ({navigation}) =>({
        }
       }
   }
+
+  static navigationOptions= ({navigation}) =>({ 
+    headerLeft: () => 
+      <TouchableOpacity style={{marginLeft: 10}} onPress ={() => navigation.goBack()}>
+        <Image
+            style={{width: 25, height: 25, marginTop: 2}}
+            source={require('../images/back.png')}/>
+      </TouchableOpacity>
+    , title: null,
+   headerStyle: {
+     elevation: 0,
+     backgroundColor: '#ffffff'
+   },
+   headerTitleStyle: {
+     color: '#7850EA',
+     fontFamily: 'NunitoSans-SemiBold',
+     fontSize: 16
+   },
+   
+ });
   render() {
     let _this = this
     const currentOptions = this.state.options

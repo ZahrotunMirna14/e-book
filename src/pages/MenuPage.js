@@ -2,7 +2,6 @@ import React from 'react';
 import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, ImageBackground, Image, Dimensions} from 'react-native';
 import { Container, Header, body, Title, Card, CardItem, Left, Content, Thumbnail, Subtitle, Icon} from 'native-base';
 import ListMenu from './ListMenu';
-import SimpleModal from './SimpleModal';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Modal, { ModalContent, ModalFooter, ModalButton } from 'react-native-modals';
@@ -51,67 +50,7 @@ export default class MenuPage extends React.Component {
           subtitle="Masuk"
           img={require('../images/icon2.png')}
           navigation= {() =>  this.setState({ visible: true })}
-        />
-
-        <Modal
-            visible={this.state.visible}
-          >
-            <ModalContent>
-              <View>
-                <View style={styles.img}>
-                  <Image style={{width: 147, height: 147, marginVertical: '8%'}} source={require('../images/ImageDialog.png')}/>
-                </View>
-                <View style={styles.textView}>
-                  <Text style={[styles.text, {fontSize: 16, color: '#7850EA'}]}>Latihan soal !</Text>
-                  <Text style={styles.text}>Kerjakan dengan sebaik mungkin untuk mengetahui pemahaman anda dalam belajar Bela Negara</Text>
-                </View>
-              </View>
-              <View style={{flexDirection: 'row',	justifyContent: 'space-between', marginTop: 28, marginBottom: 20, }}>
-                <TouchableOpacity 
-                  style={{
-                    width: '45%',
-                    height: 40,
-                    borderRadius:10, 
-                    backgroundColor:"#DADADA",
-                    justifyContent: 'center'
-                  }}
-                  onPress={() => this.setState({ visible: false })}>
-                  <Text style={{textAlign: 'center'}}>Cancel</Text>
-                </TouchableOpacity>                
-                <TouchableOpacity 
-                  style={{
-                    width: '45%',
-                    height: 40,
-                    paddingTop: 5,
-                    paddingBottom: 5, 
-                    borderRadius:10, 
-                    backgroundColor:"#7850EA",
-                    marginLeft: 7,
-                    justifyContent: 'center'
-                  }}
-                  onPress={() => this.props.navigation.navigate('quiziz')}>
-                  <Text style={{color: '#ffffff', textAlign: 'center'}}>OK</Text> 
-                </TouchableOpacity>
-              </View>
-              {/* <ModalFooter>
-                <ModalButton
-                  text="CANCEL"
-                  onPress={() => this.setState({ visible: false })}
-                />
-                <ModalButton
-                  text="OK"
-                  onPress={() => {this.props.navigation.navigate('quiziz')}}
-                />
-              </ModalFooter> */}
-            
-            </ModalContent>
-        </Modal>
-
-        {/* <Modal transparent={true} animationType="fade" visible={this.state.isModalVisible} 
-               onRequestClose={() => this.changeModalVisibility(false)} style={styles.modalContainer}>
-             <SimpleModal changeModalVisibility={this.changeModalVisibility} />
-         </Modal> */}
-
+        />        
         <ListMenu
           judul="Kuis"
           img={require('../images/icon3.png')}
@@ -127,7 +66,7 @@ export default class MenuPage extends React.Component {
                   <Image style={{width: 147, height: 147, marginVertical: '8%'}} source={require('../images/ImageDialog.png')}/>
                 </View>
                 <View style={styles.textView}>
-                  <Text style={[styles.text, {fontSize: 16, color: '#7850EA'}]}>Latihan soal !</Text>
+                  <Text style={[styles.text, {fontSize: 16, color: '#7850EA'}]}>SEMANGAT !</Text>
                   <Text style={styles.text}>Kerjakan dengan sebaik mungkin untuk mengetahui pemahaman anda dalam belajar Bela Negara</Text>
                 </View>
               </View>
@@ -141,7 +80,7 @@ export default class MenuPage extends React.Component {
                     justifyContent: 'center'
                   }}
                   onPress={() => this.setState({ visible: false })}>
-                  <Text style={{textAlign: 'center', fontFamily: 'NunitoSans-SemiBold', fontSize: 14,}}>Batal</Text>
+                  <Text style={{textAlign: 'center', fontFamily: 'NunitoSans-SemiBold', fontSize: 14,}}>Tutup</Text>
                 </TouchableOpacity>                
                 <TouchableOpacity 
                   style={{
@@ -205,7 +144,7 @@ const styles = StyleSheet.create({
       marginVertical: 5,
       marginHorizontal: 18,
       fontSize: 14,
-      fontFamily: 'NunitoSans-Bold',
+      fontFamily: 'NunitoSans-SemiBold',
       textAlign: 'center',
   },
   modal: {

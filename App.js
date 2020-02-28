@@ -17,7 +17,8 @@ import contoh from './src/pages/materi/contoh';
 import partisipasi from './src/pages/materi/partisipasi';
 import Quiz from './src/pages/quiz';
 import about from './src/pages/about';
-import SimpleModal from './src/pages/SimpleModal';
+
+
 
 const RootStack = createStackNavigator(
   {
@@ -36,7 +37,7 @@ const RootStack = createStackNavigator(
     Partisipasi: partisipasi,
     quiziz: Quiz,
     About: about,
-    SimpleModal: SimpleModal,
+    
   },
   {
     initialRouteName: "menuLog"

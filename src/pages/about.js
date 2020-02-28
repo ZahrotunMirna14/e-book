@@ -50,12 +50,13 @@ export default class materi extends React.Component {
 		          judul="Zahrotun Mirna Nisa"
 				  subtitle="Front End Developer"
 				  link={() => Linking.openURL('https://github.com/ZahrotunMirna14')}
-		          img={require('../images/iconMateri/pengertian.png')}
+		          img={require('../images/about/nisa.jpg')}
 		        />
 
 		        <List
 		          judul="Zaidan Ahmad Huda"
-		          subtitle="Back End Developer"
+				  subtitle="Back End Developer"
+				  link={() => Linking.openURL('https://www.instagram.com/zidanhuda_/')}
 		          img={require('../images/iconMateri/dasar.png')}
 		        />
 

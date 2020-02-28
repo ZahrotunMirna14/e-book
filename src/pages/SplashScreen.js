@@ -25,7 +25,7 @@ const styles = {
   viewStyles: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'gcenter',
+    justifyContent: 'center',
     backgroundColor: '#ffffff',
     height: '100%'
   },
