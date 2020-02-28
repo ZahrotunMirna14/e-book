@@ -3,13 +3,40 @@ import {  SafeAreaView,  StyleSheet,  ScrollView,  View, StatusBar,  TouchableOp
 import {Container, Header, Content, Button, Text} from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import SplashScreen from './SplashScreen';
 
 export default class MenuLogin extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = { isLoading: true }
+  }
+  performTimeConsumingTask = async() => {
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        2000
+      )
+    );
+  }
 
+  async componentDidMount() {
+    // Preload data from an external API
+    // Preload data using AsyncStorage
+    const data = await this.performTimeConsumingTask();
+
+    if (data !== null) {
+      this.setState({ isLoading: false });
+    }
+  }
+  
   static navigationOptions = {
    header: ()=> false,
   }
    render(){
+    if (this.state.isLoading) {
+      return <SplashScreen />;
+    }  
     return(
       <View style={styles.container}>
         <ImageBackground style={{width: '100%', height: '100%'}} resizeMode="stretch" source={require('../images/background.png')}>

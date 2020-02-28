@@ -1,5 +1,5 @@
 import React from 'react';
-import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, Image, Animated } from 'react-native';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, Image, Animated, Linking  } from 'react-native';
 import { Container, Header, body, Title, Card, CardItem, Left, Content, Thumbnail, Subtitle} from 'native-base';
 import List from './ListMember';
 import Logo from '../component/Logo';
@@ -17,8 +17,8 @@ export default class materi extends React.Component {
        ,
   	  title: 'Tentang Kami',
       headerStyle: {
-        elevation: 0,
-        backgroundColor: '#ffffff'
+		elevation: 0,
+        backgroundColor: '#ffffff',
       },
       headerTitleStyle: {
         color: '#7850EA',
@@ -48,7 +48,8 @@ export default class materi extends React.Component {
 		        <List
 		          style={{marginTop: 48}}
 		          judul="Zahrotun Mirna Nisa"
-		          subtitle="Front End Developer"
+				  subtitle="Front End Developer"
+				  link={() => Linking.openURL('https://github.com/ZahrotunMirna14')}
 		          img={require('../images/iconMateri/pengertian.png')}
 		        />
 
@@ -60,26 +61,30 @@ export default class materi extends React.Component {
 
 		        <List
 		          judul="Siti Dahlia"
-		          subtitle="UI UX Designer"
-		          img={require('../images/iconMateri/unsur.png')}
+				  subtitle="UI UX Designer"
+				  link={() => Linking.openURL('https://dribbble.com/Sitidahlia')}
+		          img={require('../images/about/siti.jpg')}
 		        />
 
 		        <List
 		          judul="Salsabila Cahya Alifa"
 		          subtitle="UI UX Designer"
-		          img={require('../images/iconMateri/fungsi.png')}
+				  link={() => Linking.openURL('https://www.instagram.com/sabil.ca/')}
+		          img={require('../images/about/sabil.jpeg')}
 		        />
 
 		        <List
 		          judul="Windiana Dinda Sekaryus"
 		          subtitle="Content Writer & Illustrator"
-		          img={require('../images/iconMateri/tujuan.png')}
+				  link={() => Linking.openURL('https://dribbble.com/windianads')}
+		          img={require('../images/about/dindaa.jpg')}
 		        />
 
 		        <List
 		          judul="Rr. Yashinta Pangesti G."
 		          subtitle="Content Writer & Illustrator"
-		          img={require('../images/iconMateri/manfaat.png')}
+				  link={() => Linking.openURL('https://dribbble.com/ShintaGyanrini')}
+		          img={require('../images/about/shintaa.jpg')}
 		        />
 	      	</Content> 
 	      </ScrollView>
@@ -91,8 +96,8 @@ export default class materi extends React.Component {
 const styles = StyleSheet.create(
   {
     container: {
-	    flex: 1,
-	    backgroundColor: '#ffffff',
+		flex: 1,
+        backgroundColor: '#ffffff',
 	    height: 1000,
     },
 

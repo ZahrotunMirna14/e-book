@@ -9,7 +9,7 @@ export default class ListMember extends React.Component {
     return (
         <View style={styles.container}>
         	<Card style={styles.cv}  >
-        		<CardItem button 
+        		<CardItem button onPress = {this.props.link} 
                 style={styles.cav}>
         			<Left>
         				<Thumbnail

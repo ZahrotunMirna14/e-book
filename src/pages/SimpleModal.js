@@ -18,7 +18,9 @@ export default class SimpleModal extends Component {
         this.props.changeModalVisibility(bool)
         
     }
-    
+    _onPressButton() {
+    alert('You tapped the button!')
+  }
     render() {
         return (
             <TouchableOpacity disabled={true} style={styles.contentContainer}>
@@ -36,7 +38,7 @@ export default class SimpleModal extends Component {
                                 Cancel
                             </Text>
                         </TouchableHighlight>
-                        <TouchableHighlight onPress={() => this.closeModal(false, 'Ok')} style={styles.touchableHighlight} underlayColor={'#f1f1f1'} >
+                        <TouchableHighlight onPress={this._onPressButton} style={styles.touchableHighlight} underlayColor={'#f1f1f1'} >
                             <Text style={[styles.text, {color: 'blue'}]}>
                                 Ok
                             </Text>

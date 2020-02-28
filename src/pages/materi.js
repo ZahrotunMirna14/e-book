@@ -1,5 +1,5 @@
 import React from 'react';
-import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, Image, Animated } from 'react-native';
+import {  SafeAreaView,  StyleSheet,  ScrollView,  View,  Text,  StatusBar,  TouchableOpacity, Image, Animated, Button } from 'react-native';
 import { Container, Header, body, Title, Card, CardItem, Left, Content, Thumbnail, Subtitle} from 'native-base';
 import List from './ListContent';
 import { createAppContainer } from 'react-navigation';
@@ -89,7 +89,7 @@ export default class materi extends React.Component {
           </View>
         </Animated.View>
       <ScrollView
-          style={{ flex: 1 }}
+      
           contentContainerStyle={{ paddingTop: HEADER_MAX_HEIGHT }}
           scrollEventThrottle={16}
           onScroll={Animated.event(
