@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {  SafeAreaView,  StyleSheet,  ScrollView,  View, StatusBar,  TouchableOpacity, ImageBackground, BackHandler, Alert, Image, KeyboardAvoidingView, TextInput } from 'react-native';
 import {Container, Header, Content, Button, Text} from 'native-base';
 import Logo from '../component/Logo';
+import axios from 'axios';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import PasswordInputText from 'react-native-hide-show-password-input';
@@ -23,19 +24,65 @@ export default class LoginPage extends Component {
         color: '#7850EA',
         fontFamily: 'NunitoSans-SemiBold',
         fontSize: 16
-      },
-      
-    });
-  constructor() {
-	    super();	 
-	    this.state = { hidePassword: true }
+	  },
+	});
+      constructor(props) {
+	    super(props);	 
+		this.state = {
+			payload: {
+			  email: '',
+			  password: '',
+			},
+			hidePassword: true,
+			respons: '',
+			showToast: false,
+		};
+		this.handleInput = this.handleInput.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	  }	
+	  handleInput(name, value) {
+		this.setState(prevState => ({
+		  payload: {
+			...prevState.payload,
+			[name]: value,
+		  },
+		}));
+	  }
+
+	  handleSubmit() {
+		let payload = {
+		  ...this.state.payload,
+		};
+		axios
+      .post('http://54.162.180.82/api/login', payload)
+      .then(response => {
+        if (response.status === 200) { 
+		 this.props.navigation.navigate('Menu')
+          return ToastAndroid.show(
+            'Login Success',
+            ToastAndroid.LONG,
+            ToastAndroid.TOP,
+            25,
+            50,
+          );
+		} else if (response.status === 401){ 
+			return ToastAndroid.show(
+				'Email/Password Salah',
+				ToastAndroid.LONG,
+				ToastAndroid.TOP,
+				25,
+				50,
+			);
+		}
+      })
+      .catch(err => console.log(err));
+  }
 
 	  managePasswordVisibility = () =>
 	  {
 	    this.setState({ hidePassword: !this.state.hidePassword });
 	  }
- 
+	
    render(){
     return(
     	<View style={styles.container}>
@@ -53,6 +100,10 @@ export default class LoginPage extends Component {
 							placeholderTextColor = "#DADADA"
 							selectionColor="#fff"
 							keyboardType="email-address"
+							onChangeText={value => {
+								this.handleInput('email', value);
+							  }}
+							  value={this.state.payload.email}
 							onSubmitEditing={()=> this.password.focus()}/>
 
 					<View style = { styles.textBoxBtnHolder }>
@@ -62,10 +113,13 @@ export default class LoginPage extends Component {
 								placeholder="Masukan Kata Sandi"
 								placeholderTextColor = "#DADADA"
 								returnKeyType="go"
+		                    	onChangeText={value => {
+									this.handleInput('password', value);
+								  }}
+								  value={this.state.payload.password}
 								secureTextEntry={ this.state.hidePassword }
-								value={this.state.password}
-		                    	onChangeText={ (password) => this.setState({ password }) }
-								ref={(input) => this.password = input}/>
+								ref={(input) => this.password = input}
+								/>
 
 				        <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
 				          <Image source = { ( this.state.hidePassword ) ? require('../images/hide.png') : require('../images/see.png') } style={styles.btnImage}/>
@@ -73,7 +127,7 @@ export default class LoginPage extends Component {
 				    </View>
 				</View>
 
-				<TouchableOpacity style={styles.button} onPress ={() => this.props.navigation.navigate('Menu')}>
+				<TouchableOpacity style={styles.button} onPress ={this.handleSubmit}>
 					<Text style={styles.buttonText}>Masuk</Text>
 				</TouchableOpacity>    	
 		</KeyboardAvoidingView>	    			

@@ -12,6 +12,7 @@
   "dependencies": {
     "@freakycoder/react-native-header-view": "^0.4.13",
     "@react-native-community/masked-view": "^0.1.6",
+    "axios": "^0.19.2",
     "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-axios": "^2.0.3",
